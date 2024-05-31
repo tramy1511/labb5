@@ -6,6 +6,8 @@ import com.example.lab4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -23,6 +25,23 @@ public class UserServiceImpl implements UserService {
         }
 
         return userRepo.saveAndFlush(user);
-    };
+    }
+
+    @Override
+    public List<User> finByUserName(String userName) {
+        return userRepo.findByUserName(userName);
+    }
+
+    @Override
+    public List<User> getAllUser() {
+        return userRepo.findAll();
+    }
+
+    @Override
+    public void doGetDelete(int id) {
+         userRepo.deleteById(id);
+    }
+
+    ;
 
 }

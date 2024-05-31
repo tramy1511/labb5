@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -25,7 +26,7 @@ public class UserApi {
         try {
             result.put("success",true);
             result.put("message","Call Api Success");
-            result.put("data", userRepo.findAll());
+            result.put("data", userService.getAllUser());
         }catch(Exception e) {
             result.put("success",false);
             result.put("message","Call Api Error");
@@ -41,6 +42,25 @@ public class UserApi {
             result.put("success",true);
             result.put("message","Call Api Success");
             result.put("data", userService.doSaveUser(user));
+        }catch(Exception e) {
+            result.put("success",false);
+            result.put("message","Call Api Error");
+            result.put("data",null);
+            System.out.println(e);
+        }
+        return ResponseEntity.ok(result);
+    }
+    @GetMapping("/getFindByUser/{userName}")
+    public List<User> doGetFindByUserName(@PathVariable String userName){
+        return userService.finByUserName(userName);
+    }
+    @DeleteMapping ("/getDeleteId/{id}")
+    public ResponseEntity<?> doPostSaveUser(@PathVariable int id){
+        Map<String, Object> result = new HashMap<>();
+        try {
+            result.put("success",true);
+            result.put("message","Call Api Success");
+             userService.doGetDelete(id);
         }catch(Exception e) {
             result.put("success",false);
             result.put("message","Call Api Error");
