@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role,Integer> {
-    @Query("select u from Role u where u.roleName like?1")
-    public List<Role> findByRoleName(String userName);
+    @Query("SELECT u FROM Role u WHERE u.roleName LIKE?1")
+    List<Role> findByRoleName(String userName);
 }

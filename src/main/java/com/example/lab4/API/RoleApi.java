@@ -16,11 +16,7 @@ import java.util.Map;
 @RequestMapping("/role-api")
 public class RoleApi {
     @Autowired
-    private RoleRepository roleRepo;
-    @Autowired
     private RoleService roleService;
-    @Autowired
-    private RoleRepository roleRepository;
 
     @GetMapping("/getAllRole")
     public ResponseEntity<?> doGetAllRole() {

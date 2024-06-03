@@ -15,9 +15,6 @@ import java.util.Map;
 @RequestMapping("/user-api")
 public class UserApi {
     @Autowired
-    private UserRepository userRepo;
-
-    @Autowired
     private UserService userService;
 
     @GetMapping("/getAllUser")
